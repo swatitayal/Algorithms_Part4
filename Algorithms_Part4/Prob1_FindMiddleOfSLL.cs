@@ -4,7 +4,7 @@ namespace Algorithms_Part4
 {
     class Prob1_FindMiddleOfSLL
     {
-        static void Main1(string[] args)
+        static void Main(string[] args)
         {
             LinkedList myList = new LinkedList();
             myList.AddNode(1);
@@ -13,6 +13,9 @@ namespace Algorithms_Part4
             myList.AddNode(4);
             myList.AddNode(5);
             myList.AddNode(6);
+            myList.AddNode(7);
+            myList.AddNode(8);
+            myList.AddNode(9);
 
             myList.Print();
 

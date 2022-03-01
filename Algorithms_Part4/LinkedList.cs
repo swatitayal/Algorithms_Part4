@@ -30,7 +30,6 @@ namespace Algorithms_Part4
         public void Print()
         {
             Node curr_node = Head;
-
             
             while (curr_node != null)
             {

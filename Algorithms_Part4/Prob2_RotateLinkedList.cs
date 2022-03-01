@@ -6,7 +6,7 @@ namespace Algorithms_Part4
 {
     class Prob2_RotateLinkedList
     {
-        static void Main(string[] args)
+        static void Main2(string[] args)
         {
             LinkedList myList = new LinkedList();
             myList.AddNode(10);
@@ -16,52 +16,52 @@ namespace Algorithms_Part4
             myList.AddNode(50);
             myList.AddNode(60);
             myList.AddNode(70);
-            
-            int k = 4;
+            myList.AddNode(80);
 
-            Console.Write("\nThe elements of the Linked List are: ");
+            int k = 5;
+
+            Console.Write("\nLinked List: ");
             myList.Print();
 
             rotateLL(myList, k);
-
-
         }
         static void rotateLL(LinkedList myList, int k)
         {
             Node curr_node = myList.Head;
-            Node start, curr;
             
-            int ctr = 0;
-            while(curr_node!=null)
+            if (curr_node == null)
+            {
+                Console.Write("The List is empty!!\n");
+                return;
+            }
+
+            int ctr = 1;
+
+            while (curr_node != null && ctr < k)
             {
                 ctr++;
-                if(ctr ==k)
-                {
-                    start = curr_node.next;
-                    curr_node.next = null;
-                    curr = start;
-                    while(curr.next !=null)
-                    {
-                        curr = curr.next;
-                    }
-                    curr.next = myList.Head;
-                    myList.Head = start;
-
-                    Console.Write("The elements of the Linked List after rotation are: ");
-                    myList.Print();
-
-                    break;
-                }
-
-                else
-                {
-                    curr_node = curr_node.next;
-                }
+                curr_node = curr_node.next;
             }
+
+            Node last_node = curr_node;
+
+            if(last_node.next == null)
+            {
+                Console.Write("The Linked List will be same after rotation by '" + k + "' nodes.\n");
+                return;
+            }
+
+            while (curr_node.next != null)
+            {
+                curr_node = curr_node.next;
+            }
+
+            curr_node.next = myList.Head;
+            myList.Head = last_node.next;
+            last_node.next = null;
+
+            Console.Write("The Linked List after rotation by '" + k + "' nodes is: ");
+            myList.Print();
         }
     }
-
-
-
-    
 }
