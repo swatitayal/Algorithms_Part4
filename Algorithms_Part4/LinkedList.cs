@@ -31,12 +31,13 @@ namespace Algorithms_Part4
         {
             Node curr_node = Head;
 
-            Console.Write("The elements of the Linked List are: ");
+            
             while (curr_node != null)
             {
                 Console.Write(curr_node.data + " ");
                 curr_node = curr_node.next;
             }
+            Console.Write("\n");
         }
     }
 
