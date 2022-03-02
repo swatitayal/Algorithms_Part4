@@ -6,7 +6,7 @@ namespace Algorithms_Part4
 {
     class Prob5_nthNodeFromEnd
     {
-        static void Main(string[] args)
+        static void Main5(string[] args)
         {
             LinkedList myList = new LinkedList();
             int n = 3;

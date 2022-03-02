@@ -30,7 +30,27 @@ namespace Algorithms_Part4
         public void Print()
         {
             if(Head != null)
-                Head.Print();
+            Head.Print();
+        }
+
+        public void AddLastNodeinLoop(int pos)
+        {
+            Node lastNode = Head;
+            Node nthNode = Head;
+            int ctr = 1;
+            while(lastNode.next != null)
+            {
+                lastNode = lastNode.next;
+            }
+
+            while(ctr!=pos)
+            {
+                nthNode = nthNode.next;
+                ctr++;
+            }
+
+            lastNode.next = nthNode;
+
         }
     }
 
