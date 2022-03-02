@@ -29,14 +29,8 @@ namespace Algorithms_Part4
 
         public void Print()
         {
-            Node curr_node = Head;
-            
-            while (curr_node != null)
-            {
-                Console.Write(curr_node.data + " ");
-                curr_node = curr_node.next;
-            }
-            Console.Write("\n");
+            if(Head != null)
+                Head.Print();
         }
     }
 
@@ -49,6 +43,17 @@ namespace Algorithms_Part4
         {
             data = d;
             next = null;
+        }
+
+        public void Print()
+        {
+            Node curr_node = this;
+            while (curr_node != null)
+            {
+                Console.Write(curr_node.data + " ");
+                curr_node = curr_node.next;
+            }
+            Console.Write("\n");
         }
     }
 }

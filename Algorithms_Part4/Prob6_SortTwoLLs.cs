@@ -6,22 +6,22 @@ namespace Algorithms_Part4
 {
     class Prob6_SortTwoLLs
     {
-        static void Main(string[] args)
+        static void Main6(string[] args)
         {
             LinkedList listA = new LinkedList();
             LinkedList listB = new LinkedList();
             //listA.AddNode(10);
             //listA.AddNode(20);
             //listA.AddNode(30);
-            //listB.AddNode(15);
+            //istB.AddNode(15);
             //listB.AddNode(17);
 
-            //listA.AddNode(5);
-            //listA.AddNode(7);
-            //listA.AddNode(9);
-            //listB.AddNode(4);
-            //listB.AddNode(6);
-            //listB.AddNode(8);
+            listA.AddNode(5);
+            listA.AddNode(7);
+            listA.AddNode(9);
+            listB.AddNode(4);
+            listB.AddNode(6);
+            listB.AddNode(8);
 
             //listA.AddNode(1);
             //listA.AddNode(3);
@@ -39,11 +39,11 @@ namespace Algorithms_Part4
             listA.Print();
             listB.Print();
 
-            listA = sortLists(listA, listB);
+            Node result = sortLists(listA.Head, listB.Head);
 
-            if (listA != null)
+            if (result != null)
             {
-                listA.Print();
+                result.Print();
             }
             else
             {
@@ -52,12 +52,13 @@ namespace Algorithms_Part4
                 
         }
 
-        static LinkedList sortLists(LinkedList listA, LinkedList listB)
+        static Node sortLists(Node headA, Node headB)
         {
-            Node cA = listA.Head;
-            Node cB = listB.Head;
+            Node cA = headA;
+            Node cB = headB;
             
             Node done = null;
+            Node temp = null;
 
             if(cA == null && cB == null)                //If both lists are empty
             {
@@ -65,11 +66,12 @@ namespace Algorithms_Part4
             }
             else if(cA == null && cB !=null)            //If ListA is empty
             {
-                return listB;
+                headA = headB;
+                return headA;
             }
             else if(cA != null && cB == null)           //If ListB is empty
             {
-                return listA;
+                return headA;
             }
 
             if (cA.data < cB.data)                      //Compare the head of both lists
@@ -79,14 +81,14 @@ namespace Algorithms_Part4
             }
             else
             {
-                Node temp = cB;
+                temp = cB;
                 cB = cB.next;
-                temp.next = listA.Head;
-                listA.Head = temp;
+                temp.next = headA;
+                headA = temp;
                 done = temp;
             }
 
-            while(cA != null & cB != null)          //Sorting of the lists
+            while(cA != null && cB != null)          //Sorting of the lists
             {
                 if(cA.data < cB.data)
                 {
@@ -96,7 +98,7 @@ namespace Algorithms_Part4
 
                 else
                 {
-                    Node temp = cB;
+                    temp = cB;
                     cB = cB.next;
                     temp.next = done.next;
                     done.next = temp;
@@ -113,7 +115,7 @@ namespace Algorithms_Part4
                 done.next = cA;
             }
 
-            return listA;
+            return headA;
             
         }
     }
