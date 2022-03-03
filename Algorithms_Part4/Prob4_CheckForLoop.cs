@@ -6,7 +6,7 @@ namespace Algorithms_Part4
 {
     class Prob4_CheckForLoop
     {
-        static void Main(string[] args)
+        static void Main4(string[] args)
         {
             LinkedList myList = new LinkedList();
 
