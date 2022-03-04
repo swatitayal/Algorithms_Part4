@@ -6,10 +6,10 @@ namespace Algorithms_Part4
 {
     class Prob9_FindSumOfTwoLists
     {
-        static void Main(string[] args)
+        static void Main9(string[] args)
         {
-            LinkedList listA = new LinkedList();
-            LinkedList listB = new LinkedList();
+            LinkedList<int> listA = new LinkedList<int>();
+            LinkedList<int> listB = new LinkedList<int>();
 
             //listA.AddNode(5);
             //listA.AddNode(4);
@@ -29,7 +29,7 @@ namespace Algorithms_Part4
             listA.Print();
             listB.Print();
 
-            LinkedList sum = findSum(listA, listB);
+            LinkedList<int> sum = findSum(listA, listB);
             if (sum.Head == null)
             {
                 Console.WriteLine("The lists are empty!");
@@ -42,12 +42,12 @@ namespace Algorithms_Part4
 
         }
         
-        static LinkedList findSum(LinkedList listA, LinkedList listB)
+        static LinkedList<int> findSum(LinkedList<int> listA, LinkedList<int> listB)
         {
-            Node ca = listA.Head;
-            Node cb = listB.Head;
+            Node<int> ca = listA.Head;
+            Node<int> cb = listB.Head;
 
-            LinkedList sumList = new LinkedList();
+            LinkedList<int> sumList = new LinkedList<int>();
             int result = 0;
             int carry = 0;
 

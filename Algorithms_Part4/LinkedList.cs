@@ -4,13 +4,13 @@ using System.Text;
 
 namespace Algorithms_Part4
 {
-    public class LinkedList
+    public class LinkedList<T>
     {
-        public Node Head;
-        public void AddNode(int data)
+        public Node<T> Head;
+        public void AddNode(T data)
         {
-            Node new_node = new Node(data);
-            Node curr_node = Head;
+            Node<T> new_node = new Node<T>(data);
+            Node<T> curr_node = Head;
 
             if (Head == null)
             {
@@ -29,21 +29,21 @@ namespace Algorithms_Part4
 
         public void Print()
         {
-            if(Head != null)
-            Head.Print();
+            if (Head != null)
+                Head.Print();
         }
 
         public void AddLastNodeinLoop(int pos)
         {
-            Node lastNode = Head;
-            Node nthNode = Head;
+            Node<T> lastNode = Head;
+            Node<T> nthNode = Head;
             int ctr = 1;
-            while(lastNode.next != null)
+            while (lastNode.next != null)
             {
                 lastNode = lastNode.next;
             }
 
-            while(ctr!=pos)
+            while (ctr != pos)
             {
                 nthNode = nthNode.next;
                 ctr++;
@@ -54,20 +54,21 @@ namespace Algorithms_Part4
         }
     }
 
-    public class Node
+    public class Node<T>
     {
-        public int data;
-        public Node next;
+        public T data;
+        public Node<T> next, bottom;
 
-        public Node(int d)
+        public Node(T d)
         {
             data = d;
             next = null;
+            bottom = null;
         }
 
         public void Print()
         {
-            Node curr_node = this;
+            Node<T> curr_node = this;
             while (curr_node != null)
             {
                 Console.Write(curr_node.data + " ");
@@ -77,4 +78,3 @@ namespace Algorithms_Part4
         }
     }
 }
-

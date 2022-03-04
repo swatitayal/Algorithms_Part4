@@ -8,7 +8,7 @@ namespace Algorithms_Part4
     {
         static void Main5(string[] args)
         {
-            LinkedList myList = new LinkedList();
+            LinkedList<int> myList = new LinkedList<int>();
             int n = 3;
 
             for (int i = 1; i <= 8; i++)
@@ -18,7 +18,7 @@ namespace Algorithms_Part4
 
             myList.Print();
             
-            Node result = findNthNode(myList.Head, n);
+            Node<int> result = findNthNode(myList.Head, n);
 
             if (result != null)
             {
@@ -27,10 +27,10 @@ namespace Algorithms_Part4
             
         }
 
-        static Node findNthNode(Node head, int n)
+        static Node<int> findNthNode(Node<int> head, int n)
         {
-            Node pivot = head;
-            Node curr_node = head;
+            Node<int> pivot = head;
+            Node<int> curr_node = head;
             int ctr = 0;
 
             if (head == null)

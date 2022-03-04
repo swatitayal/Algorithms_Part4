@@ -8,8 +8,8 @@ namespace Algorithms_Part4
     {
         static void Main6(string[] args)
         {
-            LinkedList listA = new LinkedList();
-            LinkedList listB = new LinkedList();
+            LinkedList<int> listA = new LinkedList<int>();
+            LinkedList<int> listB = new LinkedList<int>();
             //listA.AddNode(10);
             //listA.AddNode(20);
             //listA.AddNode(30);
@@ -39,7 +39,7 @@ namespace Algorithms_Part4
             listA.Print();
             listB.Print();
 
-            Node result = sortLists(listA.Head, listB.Head);
+            Node<int> result = sortLists(listA.Head, listB.Head);
 
             if (result != null)
             {
@@ -52,13 +52,13 @@ namespace Algorithms_Part4
                 
         }
 
-        static Node sortLists(Node headA, Node headB)
+        static Node<int> sortLists(Node<int> headA, Node<int> headB)
         {
-            Node cA = headA;
-            Node cB = headB;
+            Node<int> cA = headA;
+            Node<int> cB = headB;
             
-            Node done = null;
-            Node temp = null;
+            Node<int> done = null;
+            Node<int> temp = null;
 
             if(cA == null && cB == null)                //If both lists are empty
             {

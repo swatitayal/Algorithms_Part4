@@ -8,7 +8,7 @@ namespace Algorithms_Part4
     {
         static void Main3(string[] args)
         {
-            LinkedList myList = new LinkedList();
+            LinkedList<int> myList = new LinkedList<int>();
 
             int k = 2;
 
@@ -26,17 +26,17 @@ namespace Algorithms_Part4
             {
                 Console.WriteLine("Current List: ");
                 myList.Print();
-                Node result = reverse(myList.Head, k);
+                Node<int> result = reverse(myList.Head, k);
                 Console.WriteLine("\nList after reversing every '" + k + "' nodes: ");
                 result.Print();
             }
         }
 
-        static Node reverse(Node head, int k)
+        static Node<int> reverse(Node<int> head, int k)
         {
-            Node curr = head;
-            Node tail = null;
-            Node prev = null;
+            Node<int> curr = head;
+            Node<int> tail = null;
+            Node<int> prev = null;
             int ctr = 0;
 
             while(ctr<k && curr !=null)

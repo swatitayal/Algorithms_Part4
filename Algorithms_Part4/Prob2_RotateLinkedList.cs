@@ -8,7 +8,7 @@ namespace Algorithms_Part4
     {
         static void Main2(string[] args)
         {
-            LinkedList myList = new LinkedList();
+            LinkedList<int> myList = new LinkedList<int>();
             myList.AddNode(10);
             myList.AddNode(20);
             myList.AddNode(30);
@@ -25,9 +25,9 @@ namespace Algorithms_Part4
 
             rotateLL(myList, k);
         }
-        static void rotateLL(LinkedList myList, int k)
+        static void rotateLL(LinkedList<int> myList, int k)
         {
-            Node curr_node = myList.Head;
+            Node<int> curr_node = myList.Head;
             
             if (curr_node == null)
             {
@@ -43,7 +43,7 @@ namespace Algorithms_Part4
                 curr_node = curr_node.next;
             }
 
-            Node last_node = curr_node;
+            Node<int>  last_node = curr_node;
 
             if(last_node.next == null)
             {

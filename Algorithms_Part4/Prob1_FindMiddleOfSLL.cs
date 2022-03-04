@@ -6,7 +6,7 @@ namespace Algorithms_Part4
     {
         static void Main1(string[] args)
         {
-            LinkedList myList = new LinkedList();
+            LinkedList<int> myList = new LinkedList<int>();
             myList.AddNode(1);
             myList.AddNode(2);
             myList.AddNode(3);
@@ -22,10 +22,10 @@ namespace Algorithms_Part4
             FindMidNode(myList);
         }
 
-        static void FindMidNode(LinkedList myList)
+        static void FindMidNode(LinkedList<int> myList)
         {
-            Node slow = myList.Head;
-            Node fast = myList.Head;
+            Node<int> slow = myList.Head;
+            Node<int> fast = myList.Head;
 
             if (slow == null)
             {

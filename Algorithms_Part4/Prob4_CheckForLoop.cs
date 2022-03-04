@@ -8,7 +8,7 @@ namespace Algorithms_Part4
     {
         static void Main4(string[] args)
         {
-            LinkedList myList = new LinkedList();
+            LinkedList<int> myList = new LinkedList<int>();
 
             for (int i = 1; i <= 5; i++)
             {
@@ -33,10 +33,10 @@ namespace Algorithms_Part4
 
         }
 
-        static bool isLoop(Node head)
+        static bool isLoop(Node<int> head)
         {
-            Node fast = head;
-            Node slow = head;
+            Node<int> fast = head;
+            Node<int> slow = head;
 
             while(slow != null && fast!=null && fast.next!=null)
             {

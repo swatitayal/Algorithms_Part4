@@ -8,7 +8,7 @@ namespace Algorithms_Part4
     {
         static void Main8(string[] args)
         {
-            LinkedList myList = new LinkedList();
+            LinkedList<int> myList = new LinkedList<int>();
 
             for (int i = 1; i <= 10; i++)
             {
@@ -24,17 +24,17 @@ namespace Algorithms_Part4
             {
                 Console.WriteLine("Current List: ");
                 myList.Print();
-                Node result = swapPairwise(myList.Head);
+                Node<int> result = swapPairwise(myList.Head);
                 Console.WriteLine("\nList after pairwise swap: ");
                 result.Print();
             }
             
         }
 
-        static Node swapPairwise(Node head)
+        static Node<int> swapPairwise(Node<int> head)
         {
-            Node key = head;
-            Node pair = null;
+            Node<int> key = head;
+            Node<int> pair = null;
             int value = 0;
 
             while(key!= null && key.next!=null)
