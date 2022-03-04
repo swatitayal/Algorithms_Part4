@@ -6,20 +6,18 @@ namespace Algorithms_Part4
 {
     class Prob10_isPalidrome
     {
-        static void Main10(string[] args)
+        static void Main(string[] args)
         {
             LinkedList<int> myList = new LinkedList<int>();
 
             myList.AddNode(1);
             myList.AddNode(2);
             myList.AddNode(3);
-            myList.AddNode(4);
             //myList.AddNode(4);
+            myList.AddNode(4);
             myList.AddNode(3);
             myList.AddNode(2);
             myList.AddNode(1);
-
-            myList.Print();
 
             if (myList.Head == null)
             {
@@ -28,17 +26,22 @@ namespace Algorithms_Part4
 
             else
             {
+                Console.WriteLine("\nGiven List: ");
+                myList.Print();
+
                 bool result = isPalindrome(myList);
 
                 if (result)
                 {
-                    Console.WriteLine("\nTRUE: Given list is a Palindrome");
+                    Console.WriteLine("\nTRUE: Given list is a Palindrome\n");
                 }
                 else
                 {
-                    Console.WriteLine("\nFALSE: Given list is NOT a Palindrome");
+                    Console.WriteLine("\nFALSE: Given list is NOT a Palindrome \n");
                 }
-
+                
+                myList.Print();
+                Console.WriteLine("(List after Palindrome check)");
             }
         }
 
@@ -48,13 +51,15 @@ namespace Algorithms_Part4
             Node<int> fast = input.Head;
             Node<int> slow = input.Head;
             Node<int> curr = input.Head;
+            Node<int> mid = null;                               //To store the value of mid point,
+                                                                //will be used to reverse the list back to original.
 
             while (fast.next != null && fast.next.next != null) // Find the mid point of the linked list.
             {
                 slow = slow.next;
                 fast = fast.next.next;
             }
-
+            mid = slow;                                         //To store the value of mid point.
             slow.next = reverse(slow.next);
 
             slow = slow.next;
@@ -69,6 +74,8 @@ namespace Algorithms_Part4
                 else
                     break;
             }
+
+            mid.next = reverse(mid.next);           //Reverse the half of the list back to original.
 
             if (slow == null)
                 return true;
@@ -92,7 +99,6 @@ namespace Algorithms_Part4
 
             return prev;
         }
-
 
 
         //IsPalidrome implementation using a stack.

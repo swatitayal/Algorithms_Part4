@@ -6,7 +6,7 @@ namespace Algorithms_Part4
 {
     class Prob7_FlattenList
     {
-        static void Main(string[] args)
+        static void Main7(string[] args)
         {
             LinkedList<int> myList = new LinkedList<int>();
             
