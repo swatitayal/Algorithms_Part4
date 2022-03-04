@@ -6,67 +6,91 @@ namespace Algorithms_Part4
 {
     class Prob7_FlattenList
     {
-        static void Main7(string[] args)
+        static void Main(string[] args)
         {
-           
+            LinkedList<int> myList = new LinkedList<int>();
             
+            myList.AddNode(5);
+            myList.AddNode(10);
+            myList.AddNode(19);
+            myList.AddNode(28);
+            myList.AddNode(55);
+            myList.AddNode(75);
+            myList.AddNode(80);
+
+            myList.AddNodeToBottom(myList.Head, 7);
+            myList.AddNodeToBottom(myList.Head, 8);
+            myList.AddNodeToBottom(myList.Head, 30);
+
+            myList.AddNodeToBottom(myList.Head.next, 20);
+
+            myList.AddNodeToBottom(myList.Head.next.next, 22);
+            myList.AddNodeToBottom(myList.Head.next.next, 50);
+
+            myList.AddNodeToBottom(myList.Head.next.next.next, 35);
+            myList.AddNodeToBottom(myList.Head.next.next.next, 40);
+            myList.AddNodeToBottom(myList.Head.next.next.next, 45);
+
+            Console.WriteLine("\nGiven List:");
+            myList.print2DList();
+            flattenList(myList.Head);
 
         }
 
-        static void flattenList()
+        static void flattenList(Node<int> head)
         {
-            Node<int> x = new Node<int>(25);
-            Node<int> y = new Node<int>(15);
-            Node<int> z = new Node<int>(5);
+            Node<int> chead = head;
+            Node<int> right = chead.next;
+            Node<int> down = chead.bottom;
+            LinkedList<int> result = new LinkedList<int>();
+            LinkedList<int> leftOver = new LinkedList<int>();
+            result.AddNode(head.data);
 
-            int result = findMinimumNode(x, y, z);
-
-            if (result == 1)
+            while(right!=null && down!=null)
             {
-                Console.WriteLine("Right is minimum");
-            }
-            else if (result == 2)
-            {
-                Console.WriteLine("Bottom is minimum");
-            }
-            else if (result == 3)
-            {
-                Console.WriteLine("LeftOver is minimum");
-            }
-            else
-            {
-                Console.WriteLine("Invalid");
-            }
-        }
-
-
-        static int findMinimumNode(Node<int> right, Node<int> bottom, Node<int> leftOver)
-        {
-            int r = right.data;
-            int b = bottom.data;
-            int l = leftOver.data;
-
-            Console.WriteLine("Right: " + r + "\nBottom: " + b + "\nLeftOver: " + l);
-
-            if (right.data < bottom.data)
-            {
-                if (right.data < leftOver.data)
-                    return 1;
+                if(right.data > down.data)
+                {
+                    result.AddNode(down.data);
+                    down = down.bottom;
+                }
                 else
                 {
-                    if (leftOver.data < bottom.data)
-                        return 3;
-                    else
-                        return 2;
+                    result.AddNode(right.data);
+                    leftOver.Head = leftOver.AddNodeAsc(leftOver.Head, down.data);
+                    chead = right;
+                    right = chead.next;
+                    down = chead.bottom;
                 }
             }
-            else
+
+            if (right == null)
             {
-                if (leftOver.data < bottom.data)
-                   return 3;
-                else
-                    return 2;
+                while (down != null)
+                {
+                    leftOver.Head = leftOver.AddNodeAsc(leftOver.Head, down.data);
+                    down = down.bottom;
+                }
             }
+
+            if (down == null)
+            {
+                while (right != null)
+                {
+                    leftOver.Head = leftOver.AddNodeAsc(leftOver.Head, right.data);
+                    right = right.next;
+                }
+            }
+
+            Console.WriteLine("\nPrinting result w/o merge:");
+            result.Print();
+
+            Console.WriteLine("\nLeft Over:");
+            leftOver.Head.Print();
+
+            Console.WriteLine("\nFinal Result after merge:");
+            result.Head = Prob6_SortTwoLLs.sortLists(result.Head, leftOver.Head);
+            result.Print();
+            Console.WriteLine("\n");
         }
     }
 }

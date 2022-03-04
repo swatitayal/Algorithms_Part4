@@ -27,10 +27,35 @@ namespace Algorithms_Part4
             }
         }
 
+        public void AddNodeToBottom(Node<T> head, T data)
+        {
+            Node<T> new_node = new Node<T>(data);
+            Node<T> curr = head;
+
+            if(head == null)
+            {
+                head = new_node;
+                head.bottom = null;
+            }
+
+            while(curr.bottom!= null)
+            {
+                curr = curr.bottom;
+            }
+            curr.bottom = new_node;
+        }
+
+        
         public void Print()
         {
             if (Head != null)
                 Head.Print();
+        }
+
+        public void print2DList()
+        {
+            if (Head != null)
+                Head.print2DList();
         }
 
         public void AddLastNodeinLoop(int pos)
@@ -51,6 +76,46 @@ namespace Algorithms_Part4
 
             lastNode.next = nthNode;
 
+        }
+
+        public Node<int> AddNodeAsc(Node<int> head, int data)
+        {
+            Node<int> new_node = new Node<int>(data);
+            Node<int> curr = head;
+            Node<int> prev = null;
+
+            if (head == null)
+            {
+                head = new_node;
+                head.next = null;
+            }
+            else if (head.next == null)
+            {
+                if (head.data < data)
+                {
+                    head.next = new_node;
+                }
+                else
+                {
+                    new_node.next = head;
+                    head = new_node;
+                }
+            }
+            else
+            {
+                while (curr != null)
+                {
+                    if (curr.data < data)
+                    {
+                        prev = curr;
+                        curr = curr.next;
+                    }
+                    else break;
+                }
+                new_node.next = curr;
+                prev.next = new_node;
+            }
+            return head;
         }
     }
 
@@ -76,5 +141,26 @@ namespace Algorithms_Part4
             }
             Console.Write("\n");
         }
+
+        public void print2DList()
+        {
+            Node<T> curr = this;
+
+            Console.Write("\n    Head");
+            while (curr != null)
+            {
+                Console.Write("\n\t" + curr.data);
+                Node<T> down = curr.bottom;
+                while (down != null)
+                {
+                    Console.Write(" -- " + down.data);
+                    down = down.bottom;
+                }
+                curr = curr.next;
+                Console.Write("\n\t|");
+            }
+            Console.Write("\n    Null\n");
+        }
+
     }
 }

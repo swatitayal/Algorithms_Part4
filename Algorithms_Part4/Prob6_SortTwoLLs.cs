@@ -52,7 +52,7 @@ namespace Algorithms_Part4
                 
         }
 
-        static Node<int> sortLists(Node<int> headA, Node<int> headB)
+        public static Node<int> sortLists(Node<int> headA, Node<int> headB)
         {
             Node<int> cA = headA;
             Node<int> cB = headB;

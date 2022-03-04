@@ -6,18 +6,18 @@ namespace Algorithms_Part4
 {
     class Prob10_isPalidrome
     {
-        static void Main(string[] args)
+        static void Main10(string[] args)
         {
             LinkedList<int> myList = new LinkedList<int>();
 
             myList.AddNode(1);
-            //myList.AddNode(2);
-            //myList.AddNode(9);
+            myList.AddNode(2);
+            myList.AddNode(3);
+            myList.AddNode(4);
             //myList.AddNode(4);
-            //myList.AddNode(5);
-            //myList.AddNode(3);
-            //myList.AddNode(2);
-            //myList.AddNode(1);
+            myList.AddNode(3);
+            myList.AddNode(2);
+            myList.AddNode(1);
 
             myList.Print();
 
@@ -40,7 +40,6 @@ namespace Algorithms_Part4
                 }
 
             }
-            //myList.Print();
         }
 
 
@@ -49,7 +48,6 @@ namespace Algorithms_Part4
             Node<int> fast = input.Head;
             Node<int> slow = input.Head;
             Node<int> curr = input.Head;
-            Node<int> prev = null;             // to track the midpoint of the linked list
 
             while (fast.next != null && fast.next.next != null) // Find the mid point of the linked list.
             {
@@ -66,20 +64,16 @@ namespace Algorithms_Part4
                 if (slow.data == curr.data)
                 {
                     slow = slow.next;
-                    prev = curr;                         // to track the midpoint of the linked list
                     curr = curr.next;
                 }
                 else
                     break;
             }
 
-            //prev.next = reverse(prev.next);             // to reverse back the linkedlist
-
             if (slow == null)
                 return true;
             else
                 return false;
-
         }
 
         static Node<int> reverse(Node<int> head)
